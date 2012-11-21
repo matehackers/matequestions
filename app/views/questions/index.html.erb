@@ -1,0 +1,31 @@
+<h1>Listing questions</h1>
+
+<table>
+  <tr>
+    <th>Inquiry</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questions.each do |question| %>
+  <tr>
+    <td><%= question.inquiry %></td>
+
+    <% if current_user %>
+      <td><%= link_to 'Show', question %></td>
+      <td><%= link_to 'Edit', edit_question_path(question) %></td>
+      <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+
+    <td> <%= render 'answer', :locals => { :question => question } %> </td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if current_user %>
+  <%= link_to 'New Question', new_question_path %>
+<% end %>

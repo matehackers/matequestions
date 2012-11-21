@@ -87,9 +87,15 @@ class QuestionsController < ApplicationController
   # POST /questions/answer/1
   def answer
     @question = Question.find(params[:id])
-    if @question.match(params[:answer])
-      redirect_to questions_path, :notice => 'Yeah, right!'
+    right = @question.match(params[:answer])
+
+    if right
+     flash[:notice] = 'That is right!'
+    else
+      flash[:error] = 'Try again!'
     end
+
+    redirect_to questions_path
   end
 
 end

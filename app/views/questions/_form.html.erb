@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :answer_type %><br />
-    <%= f.number_field :answer_type %>
+    <%= f.select :answer_type, Question.answer_types %>
   </div>
   <div class="actions">
     <%= f.submit %>

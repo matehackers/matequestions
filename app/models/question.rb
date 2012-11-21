@@ -12,6 +12,10 @@ class Question < ActiveRecord::Base
   validates :answer_type, :presence => true, 
             :inclusion => {:in => ANSWER_TYPES.values}
 
+  def self.answer_types
+    ANSWER_TYPES
+  end
+
   def answer_type_name
     ANSWER_TYPES.invert[answer_type]
   end

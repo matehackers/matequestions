@@ -13,6 +13,13 @@
   <%= @question.answer_type_name %>
 </p>
 
+<p>
+  <b>Next:</b>
+  <%= @question.get_next.inquiry %>
+</p>
 
+<p>
+    <b>Answer it</b>: <%= render :partial => 'answer', :locals => { :id => @question.id } %>
+</p>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

@@ -23,6 +23,12 @@
     <%= f.label :answer_type %><br />
     <%= f.select :answer_type, Question.answer_types %>
   </div>
+
+  <div class="field">
+    <%= f.label :next %><br />
+    <%= f.select :next, Question.question_names(@question) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

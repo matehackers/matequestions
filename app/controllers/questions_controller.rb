@@ -47,6 +47,11 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+
+        # If question points to no one question, point to itself
+        @question.next ||= @question.id
+        @question.save
+
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
       else
